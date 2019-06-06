@@ -1,0 +1,148 @@
+$c-black: #192032;
+$c-white: #f0f0f0;
+$c-blue: #1b5ae2;
+$c-button: lighten($c-black, 15%);
+$c-red: #c9315b;
+
+:root {
+  --gap: 1rem;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Roboto Mono', Consolas, monospace;
+  //overflow-y: scroll;
+}
+
+body {
+  background-color: $c-black;
+  color: $c-white;
+  min-height: 100vh;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+pre {
+  margin: 0;
+}
+
+input, textarea {
+  font-size: inherit;
+  padding: 0.5rem;
+  background-color: transparent;
+  color: inherit;
+  border: 0;
+  display: block;
+  transition: background-color 0.2s;
+
+  &:not(.filled) {
+    background-color: lighten($c-black, 2%);
+  }
+
+  &:hover, &:focus {
+    background-color: lighten($c-black, 4%);
+  }
+}
+
+.button {
+  display: inline-block;
+  transition: background-color 0.2s;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 10rem;
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 0.25rem 2rem rgba(black, 0.1);
+  border: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+  background-color: $c-button;
+  color: $c-white;
+
+  &:hover, &:focus {
+    background-color: lighten($c-button, 5%);
+    outline: 0;
+  }
+
+  &:active {
+    background-color: darken($c-button, 5%);
+  }
+}
+
+.button--red {
+  background-color: $c-red;
+
+  &:hover, &:focus {
+    background-color: lighten($c-red, 5%);
+    outline: 0;
+  }
+
+  &:active {
+    background-color: darken($c-red, 5%);
+  }
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+.layout {
+  min-height: 100vh;
+  padding: var(--gap);
+
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "title title" "body body" "options actions";
+
+  @media (min-width: 1000px) {
+    --gap: 1.5rem;
+  }
+}
+
+.layout__actions {
+  grid-area: actions;
+}
+
+.layout__options {
+  grid-area: options;
+}
+
+.layout__title {
+  grid-area: title;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: var(--gap);
+}
+
+.layout__body {
+  grid-area: body;
+  padding: var(--gap);
+}
+
+.actions__item {
+  display: inline-block;
+}
