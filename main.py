@@ -45,6 +45,7 @@ def cli():
     envvar='APP_WORKERS',
 )
 def serve(**kwargs):
+    database.setup_db()
     from app import app
     uvicorn.run(app, **kwargs)
 
