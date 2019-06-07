@@ -1,0 +1,10 @@
+.idea
+.git
+.gitignore
+Dockerfile
+venv
+.venv
+.vscode
+
+data
+ui

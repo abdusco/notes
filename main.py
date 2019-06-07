@@ -24,7 +24,7 @@ def cli():
 @click.option(
     "--host",
     type=str,
-    default="127.0.0.1",
+    default="0.0.0.0",
     help="Bind socket to this host.",
     show_default=True,
     envvar='APP_HOST',
