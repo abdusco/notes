@@ -1,4 +1,4 @@
-{% set action_url = '/note/%s' % note.id if note else url_for('note_create') %}
+{% set action_url = '/note/%s' % note.id if note else '/note' %}
 <form action="{{ action_url }}" method="post" class="note">
     <textarea
             name="body"
