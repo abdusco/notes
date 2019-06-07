@@ -57,7 +57,9 @@ input, textarea {
 }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   transition: background-color 0.2s;
   font-size: 0.8rem;
   line-height: 1rem;
@@ -107,42 +109,46 @@ textarea {
   resize: none;
 }
 
-.layout {
+.note {
   min-height: 100vh;
   padding: var(--gap);
 
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "title title" "body body" "options actions";
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "body body" "options actions";
 
   @media (min-width: 1000px) {
     --gap: 1.5rem;
   }
 }
 
-.layout__actions {
+.note__actions {
   grid-area: actions;
 }
 
-.layout__options {
+.note__options {
   grid-area: options;
 }
 
-.layout__title {
-  grid-area: title;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 0;
-  padding: var(--gap);
-}
-
-.layout__body {
+.note__body {
   grid-area: body;
   padding: var(--gap);
 }
 
 .actions__item {
+  display: inline-flex;
+}
+
+.icon {
   display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  fill: $c-white;
+
+  .button & {
+    margin: 0 0.5rem 0 0;
+  }
 }

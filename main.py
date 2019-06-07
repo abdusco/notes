@@ -53,7 +53,7 @@ def serve(**kwargs):
 @click.option('-f', '--force', is_flag=True, help='Force drop and recreate tables')
 def setup_db(force: bool):
     database.setup_db(force)
-    print('Done.')
+    print('Database set up successfully')
 
 
 if __name__ == '__main__':

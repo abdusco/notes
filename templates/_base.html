@@ -1,4 +1,4 @@
-{% set title = 'Note: %s' % note.title or note.id if note else 'Notes' %}
+{% set title = 'Notes' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +10,7 @@
 <main>
     {% block content %}{% endblock %}
 </main>
+
+<script src="{{ url_for('static', path='main.js') }}"></script>
 </body>
 </html>

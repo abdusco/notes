@@ -31,10 +31,9 @@ async def home(request: Request):
 
 @app.post('/note')
 async def note_create(*,
-                      title: str = Form(None),
                       body: str = Form(...),
                       db: database.Session = Depends(get_db)):
-    note = models.Note(title=title, body=body)
+    note = models.Note(body=body)
     db.add(note)
     db.commit()
     return RedirectResponse(f'/note/{note.id}')
@@ -43,6 +42,11 @@ async def note_create(*,
 @app.get('/note/{note_id}')
 async def note_view(request: Request, note_id: str, db: database.Session = Depends(get_db)):
     note = get_note(db, note_id)
+
+    note.touch()
+    db.add(note)
+    db.commit()
+
     return templates.TemplateResponse('note_view.html', context={
         'request': request,
         'note': note,
@@ -57,22 +61,25 @@ async def note_edit(request: Request, note_id: str, db: database.Session = Depen
 
 @app.post('/note/{note_id}')
 async def note_update(note_id: str,
-                      title: str = Form(None),
                       body: str = Form(...),
                       db: database.Session = Depends(get_db)):
     note = get_note(db, note_id)
-    note.title = title
+
     note.body = body
+    note.touch()
     db.add(note)
     db.commit()
+
     return RedirectResponse(f'/note/{note_id}')
 
 
 @app.post('/note/{note_id}/delete')
 async def note_delete(note_id: str, db: database.Session = Depends(get_db)):
     note = get_note(db, note_id)
+
     db.delete(note)
     db.commit()
+
     return RedirectResponse('/')
 
 

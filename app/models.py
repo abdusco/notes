@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 
 import sqlalchemy
 
@@ -9,12 +10,15 @@ class Note(Base):
     id = sqlalchemy.Column(sqlalchemy.String,
                            primary_key=True,
                            default=lambda: uuid.uuid4().hex.lower())
-    title = sqlalchemy.Column(sqlalchemy.Text)
     body = sqlalchemy.Column(sqlalchemy.Text)
+    last_accessed = sqlalchemy.Column(sqlalchemy.DateTime, default=datetime.now)
+
+    def touch(self) -> None:
+        self.last_accessed = datetime.now()
 
     def to_dict(self) -> dict:
         return {
             'id': self.id,
-            'title': self.title,
             'body': self.body,
+            'last_accessed': self.last_accessed,
         }

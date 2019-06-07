@@ -33,15 +33,15 @@ input, textarea {
   border: 0;
   display: block;
   transition: background-color 0.2s; }
-
-input:not(.filled), textarea:not(.filled) {
-  background-color: #1c2439; }
-
-input:hover, input:focus, textarea:hover, textarea:focus {
-  background-color: #202940; }
+  input:not(.filled), textarea:not(.filled) {
+    background-color: #1c2439; }
+  input:hover, input:focus, textarea:hover, textarea:focus {
+    background-color: #202940; }
 
 .button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
   transition: background-color 0.2s;
   font-size: 0.8rem;
   line-height: 1rem;
@@ -57,23 +57,19 @@ input:hover, input:focus, textarea:hover, textarea:focus {
   cursor: pointer;
   background-color: #334165;
   color: #f0f0f0; }
-
-.button:hover, .button:focus {
-  background-color: #3b4c76;
-  outline: 0; }
-
-.button:active {
-  background-color: #2a3654; }
+  .button:hover, .button:focus {
+    background-color: #3b4c76;
+    outline: 0; }
+  .button:active {
+    background-color: #2a3654; }
 
 .button--red {
   background-color: #c9315b; }
-
-.button--red:hover, .button--red:focus {
-  background-color: #d1426a;
-  outline: 0; }
-
-.button--red:active {
-  background-color: #b42c52; }
+  .button--red:hover, .button--red:focus {
+    background-color: #d1426a;
+    outline: 0; }
+  .button--red:active {
+    background-color: #b42c52; }
 
 input {
   width: 100%; }
@@ -82,39 +78,38 @@ textarea {
   width: 100%;
   resize: none; }
 
-.layout {
+.note {
   min-height: 100vh;
   padding: var(--gap);
   display: grid;
   grid-gap: var(--gap);
   grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas: "title title" "body body" "options actions"; }
+  grid-template-rows: 1fr auto;
+  grid-template-areas: "body body" "options actions"; }
+  @media (min-width: 1000px) {
+    .note {
+      --gap: 1.5rem; } }
 
-@media (min-width: 1000px) {
-  .layout {
-    --gap: 1.5rem; } }
-
-.layout__actions {
+.note__actions {
   grid-area: actions; }
 
-.layout__options {
+.note__options {
   grid-area: options; }
 
-.layout__title {
-  grid-area: title;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin: 0;
-  padding: var(--gap); }
-
-.layout__body {
+.note__body {
   grid-area: body;
   padding: var(--gap); }
 
 .actions__item {
-  display: inline-block; }
+  display: inline-flex; }
 
-/*# sourceMappingURL=style.css.map */
+.icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: middle;
+  fill: #f0f0f0; }
+  .button .icon {
+    margin: 0 0.5rem 0 0; }
 
 /*# sourceMappingURL=style.css.map */

@@ -2,21 +2,18 @@
 {% set title = 'Note: %s' % note.title or note.id %}
 
 {% block content %}
-    <article class="layout">
-        {% if note.title %}
-            <h1 class="layout__title">{{- note.title -}}</h1>
-        {% endif %}
-        <pre class="layout__body">{{- note.body -}}</pre>
-        <div class="actions layout__actions">
+    <article class="note">
+        <pre class="note__body">{{- note.body -}}</pre>
+        <div class="actions note__actions">
             <form action="{{ '/note/%s/delete' % note.id }}"
                   method="post"
                   class="actions__item"
             >
-                <button class="button button--red">Delete</button>
+                <button class="button button--red"><svg class="icon"><use xlink:href="/static/icons.svg#icon-delete"></use></svg> Delete</button>
             </form>
             <a href="{{ '/note/%s/edit' % note.id }}"
                class="actions__item button"
-            >Edit</a>
+            ><svg class="icon"><use xlink:href="/static/icons.svg#icon-edit"></use></svg> Edit</a>
         </div>
     </article>
 {% endblock %}

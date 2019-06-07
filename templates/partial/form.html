@@ -1,23 +1,16 @@
 {% set action_url = '/note/%s' % note.id if note else url_for('note_create') %}
-<form action="{{ action_url }}" method="post" class="layout">
-    <input
-            type="text"
-            class="layout__title"
-            name="title"
-            placeholder="Title"
-            value="{{- note.title if note and note.title else '' -}}"
-            autocomplete="off"
-    >
+<form action="{{ action_url }}" method="post" class="note">
     <textarea
             name="body"
-            class="layout__body"
+            class="note__body"
             rows="10"
             placeholder="Note"
             autofocus
+            data-field-body
     >{{- note.body if note else '' -}}</textarea>
-    <div class="layout__options">
+    <div class="note__options">
     </div>
-    <div class="layout__actions">
-        <button class="button">Save</button>
+    <div class="note__actions">
+        <button class="button" data-save><svg class="icon"><use xlink:href="/static/icons.svg#icon-save"></use></svg> Save</button>
     </div>
 </form>
