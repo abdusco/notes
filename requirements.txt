@@ -5,7 +5,7 @@ email-validator==1.0.4
 fastapi==0.29.0
 h11==0.8.1
 idna==2.8
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 pydantic==0.26
 python-multipart==0.0.4
